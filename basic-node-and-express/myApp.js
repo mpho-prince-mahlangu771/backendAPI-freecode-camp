@@ -18,6 +18,11 @@ app.get('/', (req, res) =>{
 //serving static assets
 app.use('/public', express.static(__dirname + '/public'));
 
+//json response
+app.get('/json', (req, res) => {
+    res.json({"message": "Hello json" })
+});
+
 console.log(__dirname + '/public');
 
 

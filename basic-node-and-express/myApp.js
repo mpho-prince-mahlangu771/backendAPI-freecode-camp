@@ -8,6 +8,7 @@ let app = express();
 
 
 
+
 /* 
 For every request,the middleware logs to the console a string taking the following format: method path - ip
 an example would look like this: GET /json - ::ffff:127.0.0.1
@@ -34,6 +35,11 @@ app.get('/now', (req,res,next) => {
     next();
 }, (req,res) => {
     res.send({time: req.time});
+});
+
+//Getting the Route Parameter Input from the Client
+app.get('/:word/echo', (req, res) => {
+    res.send({echo: req.params.word});
 });
 
 //serving static assets

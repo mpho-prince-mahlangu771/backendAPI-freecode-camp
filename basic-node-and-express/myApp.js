@@ -1,12 +1,19 @@
-//loading the variable in the .env file
-require('dotenv').config()
 let express = require('express');
 let app = express();
+//loading the variable in the .env file
+require('dotenv').config();
+let bodyParser = require('body-parser');
 
+/* 
+#####################################################################
 //to pass freecodecamp testcases enter: http://localhost:3000 
 //order matters - if 1+ routes have same http method and route,
 //then the first one is choosen always
+#####################################################################
+*/
 
+//mounted body-parser middleware
+app.use(bodyParser.urlencoded({extended: false}));
 
 /* 
 For every request,the middleware logs to the console a string taking the following format: method path - ip
@@ -16,6 +23,7 @@ app.use((req,res,next) => {
     console.log(req.method + " " +  req.originalUrl + " - " + req.ip );
     next();
 });
+
 
 //serving a html file 
 app.get('/', (req, res) => {

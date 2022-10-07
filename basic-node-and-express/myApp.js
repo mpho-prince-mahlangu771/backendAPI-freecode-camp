@@ -24,6 +24,8 @@ app.use((req,res,next) => {
     next();
 });
 
+//serving static assets
+app.use('/public', express.static(__dirname + '/public'));
 
 //serving a html file 
 app.get('/', (req, res) => {
@@ -54,8 +56,10 @@ app.get('/name', (req,res) => {
     res.send({name:  `${req.query.first} ${req.query.last}`})
 });
 
-//serving static assets
-app.use('/public', express.static(__dirname + '/public'));
+//getting data from  index.html and extracting it from the payload/body which i  can send to DB
+app.post('/name', (req,res) => {
+    res.send({name:  `${req.body.first} ${req.body.last}`});
+});
 
 
 

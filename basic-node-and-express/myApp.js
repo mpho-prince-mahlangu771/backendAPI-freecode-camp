@@ -1,8 +1,10 @@
 let express = require('express');
 let app = express();
+let bodyParser = require('body-parser');
+
 //loading the variable in the .env file
 require('dotenv').config();
-let bodyParser = require('body-parser');
+
 
 /* 
 #####################################################################
@@ -37,6 +39,17 @@ app.get('/', (req, res) =>{
     res.send("Hello Express");
 });
 
+//serving json object  using .env variables
+app.get('/json', (req,res) => {
+    let greeting = "Hello json";
+
+    if (process.env.MESSAGE_STYLE === 'uppercase') {
+        res.json({message: greeting.toUpperCase()});
+    } else{
+        res.json({message: greeting});
+    }
+});
+
 //Chaining Middleware to Create a Time Server
 app.get('/now', (req,res,next) => {
     req.time = new Date().toString();
@@ -63,13 +76,6 @@ app.post('/name', (req,res) => {
 
 
 
-
-/*
-//serving a json response
-app.get('/json', (req, res) => {
-    res.json({"message": "Hello json" })
-});
-*/
 
 console.log(__dirname + '/public');
 

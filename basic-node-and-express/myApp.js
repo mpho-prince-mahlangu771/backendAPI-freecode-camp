@@ -3,10 +3,9 @@ require('dotenv').config()
 let express = require('express');
 let app = express();
 
+//to pass freecodecamp testcases enter: http://localhost:3000 
 //order matters - if 1+ routes have same http method and route,
 //then the first one is choosen always
-
-
 
 
 /* 
@@ -29,7 +28,6 @@ app.get('/', (req, res) =>{
 });
 
 //Chaining Middleware to Create a Time Server
-//to pass testcases enter: http://localhost:3000/ without the /now path
 app.get('/now', (req,res,next) => {
     req.time = new Date().toString();
     next();
@@ -40,6 +38,12 @@ app.get('/now', (req,res,next) => {
 //Getting the Route Parameter Input from the Client
 app.get('/:word/echo', (req, res) => {
     res.send({echo: req.params.word});
+});
+
+//Getting Query Parameters Input from the Client
+//hit on browser: http://localhost:3000/name?first=mpho&last=mahlangu
+app.get('/name', (req,res) => {
+    res.send({name:  `${req.query.first} ${req.query.last}`})
 });
 
 //serving static assets

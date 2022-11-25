@@ -2,6 +2,7 @@
 
 
 # Instructions for running the project and passing the test cases on freecodecamp
+By: Mpho Prince Mahlangu
 1. install node on PC - instructions available on the internet
 2. clone the boilerplate repositories(repo) from freecodecamp  , for example: https://github.com/freeCodeCamp/boilerplate-npm/ , to clone npm repo and : https://github.com/freeCodeCamp/boilerplate-express/ , to clone the express repo, etc...
 3. cd into the boilerplate repo and run the command: npm install - to install the dependecies found inside package.json (one of them is 'express.js')
